@@ -71,5 +71,67 @@ run echo 'eval "$(phpenv init -)"' | tee -a /root/.bashrc
 run eval "$(phpenv init -)" && \
     phpenv global 5.6
 
+run export PATH="/root/.phpenv/bin:$PATH" && eval "$(phpenv init -)" && \
+    curl -sS https://getcomposer.org/installer | php && \
+
+mv composer.phar /usr/local/bin/composer && \
+
+echo "==================== Installing phpenv composer plugin ===================" && \
+mkdir /root/.phpenv/plugins && cd /root/.phpenv/plugins && \
+git clone https://github.com/ngyuki/phpenv-composer.git && \
+phpenv rehash
+
+
+run export PATH="/root/.phpenv/bin:$PATH" && eval "$(phpenv init -)" && \
+    echo "==================== Installing composer in PHP 5.3 ===================" && \ 
+    phpenv global 5.3 && \
+    phpenv rehash && \
+
+    composer --version && \
+
+    echo "==================== Installing phpunit in PHP 5.3 ===================" && \
+    wget https://phar.phpunit.de/phpunit.phar && \
+    chmod +x phpunit.phar && \
+    mv phpunit.phar /root/.phpenv/versions/5.3/bin/phpunit && \
+    phpenv rehash
+
+run export PATH="/root/.phpenv/bin:$PATH" && eval "$(phpenv init -)" && \
+    echo "==================== Installing composer in PHP 5.4 ===================" && \ 
+    phpenv global 5.4 && \
+    phpenv rehash && \
+
+    composer --version && \
+
+    echo "==================== Installing phpunit in PHP 5.4 ===================" && \
+    wget https://phar.phpunit.de/phpunit.phar && \
+    chmod +x phpunit.phar && \
+    mv phpunit.phar /root/.phpenv/versions/5.4/bin/phpunit && \
+    phpenv rehash
+
+run export PATH="/root/.phpenv/bin:$PATH" && eval "$(phpenv init -)" && \
+    echo "==================== Installing composer in PHP 5.5 ===================" && \ 
+    phpenv global 5.5 && \
+    phpenv rehash && \
+
+    composer --version && \
+
+    echo "==================== Installing phpunit in PHP 5.5 ===================" && \
+    wget https://phar.phpunit.de/phpunit.phar && \
+    chmod +x phpunit.phar && \
+    mv phpunit.phar /root/.phpenv/versions/5.5/bin/phpunit && \
+    phpenv rehash
+
+run export PATH="/root/.phpenv/bin:$PATH" && eval "$(phpenv init -)" && \
+    echo "==================== Installing composer in PHP 5.6 ===================" && \ 
+    phpenv global 5.6 && \
+    phpenv rehash && \
+
+    composer --version && \
+    
+    echo "==================== Installing phpunit in PHP 5.6 ===================" && \
+    wget https://phar.phpunit.de/phpunit.phar && \
+    chmod +x phpunit.phar && \
+    mv phpunit.phar /root/.phpenv/versions/5.6/bin/phpunit && \
+    phpenv rehash
 
 cmd ["/bin/bash", "--login"]
