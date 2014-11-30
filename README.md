@@ -1,8 +1,8 @@
-ubuntu1204_php
+ubuntu1404_php
 ==============
 
 
-Shippable CI image for PHP on Ubuntu 12.04. Available php versions:
+Shippable CI image for PHP on Ubuntu 14.04. Available php versions:
 
 1. 5.3
 2. 5.4
@@ -20,7 +20,7 @@ language: php
 php:
   - 5.3
  
-build_image: shippableimages/ubuntu1204_php
+build_image: shippableimages/ubuntu1404_php
 
 before_install:
   # Activate the required php version
